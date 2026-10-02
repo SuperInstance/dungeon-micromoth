@@ -1,0 +1,36 @@
+{
+  "prereg": "preregister@1",
+  "wave": "73-e",
+  "discipline": "dungeon-micromoth — the local stochastic surrogate: micromoth-sampled policy vs argmax on the vendored quilt-dungeons core. Sealed BEFORE the eval ran; the fleet-seeds preregister@1 ritual (seal pushed in the pre-eval commit is the timestamp the fleet can prove).",
+  "experiment": {
+    "seeds": [101, 102, 103, 104, 105, 106, 107, 108],
+    "arms": ["argmax (73-c baseline shape, deterministic tie-break)", "sampled T=0.5", "sampled T=1.0", "sampled T=2.0"],
+    "episodesPerSampledArm": 24,
+    "sampler": "src/micromoth-sampler.mjs (amplitude encoding -> seeded mulberry32 collapse)",
+    "note": "The 73-c JEV-tuned waveform is not in this repo; the experiment runs the authored baseline weight SHAPE so the tested mechanism is sampling-vs-argmax over identical weights, not the weights themselves."
+  },
+  "claims": [
+    {
+      "id": "P1",
+      "claim": "Temperature 1.0 sampled policy (micromoth-sampler, seeded measurement collapse) scores >= the argmax policy on >= 5 of the 8 eval seeds (exploration pays).",
+      "metric": "p1.seedsWon",
+      "op": "gte",
+      "threshold": 5,
+      "refusal": "Fewer than 5 of 8 seeds with meanScore(T=1.0) >= argmaxScore => FAIL: sampling at T=1.0 does not pay on this policy/dungeon family."
+    },
+    {
+      "id": "P2",
+      "claim": "Temperature 2.0 sampled policy scores < the argmax policy on >= 5 of the 8 eval seeds (over-exploration hurts) — which together with P1 makes the temperature curve single-peaked: it rises from argmax into T~1.0 and falls by T=2.0.",
+      "metric": "p2.seedsBelow",
+      "op": "gte",
+      "threshold": 5,
+      "refusal": "Fewer than 5 of 8 seeds with meanScore(T=2.0) < argmaxScore => FAIL: over-exploration does not hurt, no single-peaked-curve evidence at these temperatures.",
+      "vacuousIf": {
+        "metric": "ab.sampledScoreStdMax",
+        "op": "eq",
+        "threshold": 0,
+        "note": "If sampled episodes show zero score variance pooled across all temperatures and seeds, the temperature knob did not discriminate this run — VACUOUS, never PASS."
+      }
+    }
+  ]
+}

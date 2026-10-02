@@ -1,0 +1,14 @@
+{
+  "name": "dungeon-micromoth",
+  "version": "1.0.0",
+  "description": "MicroMoth surrogate engine — a local, quantum-flavored stochastic policy sampler for the quilt dungeons (mothquantum API stubbed; zero external calls)",
+  "type": "module",
+  "main": "src/micromoth-sampler.mjs",
+  "scripts": {
+    "test": "node --test tests/",
+    "eval": "node tools/eval-ab.mjs"
+  },
+  "keywords": ["micromoth", "quilt", "sampler", "stochastic-policy", "surrogate", "superinstance-fleet"],
+  "license": "MIT",
+  "private": true
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "preregister@1",
+  "sealedAt": "2026-10-02T21:56:52.499Z",
+  "claimsHash": "sha256:f0936ce92c5ed93e7a1cd8bb8751192e79493efabf82e09bc94525a11f01bffe",
+  "claimsPath": "prereg-73e.json",
+  "note": "wave-73 lane e: sealed BEFORE the A/B eval ran; eval seeds 101-108; arms argmax vs T{0.5,1,2}; sampler src/micromoth-sampler.mjs v1.0.0"
+}
