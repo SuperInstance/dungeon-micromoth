@@ -1,0 +1,25 @@
+{
+  "metrics": {
+    "p1": {
+      "seedsWon": 6
+    },
+    "p2": {
+      "seedsBelow": 3
+    },
+    "curve": {
+      "singlePeaked": 1,
+      "means": {
+        "argmax": -7.125,
+        "t0.5": 1.7161458333333337,
+        "t1.0": 3.3125,
+        "t2.0": 1.8307291666666667
+      }
+    },
+    "ab": {
+      "sampledScoreStdMax": 10.248283594010472
+    }
+  },
+  "evidence": {
+    "receipt": "receipts/eval-73e.json"
+  }
+}

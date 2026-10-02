@@ -115,14 +115,15 @@ function singlePeaked(vals) {
 }
 
 const metrics = {
-  'p1.seedsWon': p1.n,
-  'p2.seedsBelow': p2.n,
-  'curve.means.argmax': curve[0],
-  'curve.means.t0.5': curve[1],
-  'curve.means.t1.0': curve[2],
-  'curve.means.t2.0': curve[3],
-  'curve.singlePeaked': singlePeaked(curve) ? 1 : 0,
-  'ab.sampledScoreStdMax': std,
+  // nested to the preregister@1 dotted-path contract (claims traverse
+  // metrics.p1.seedsWon etc.); the flat console row is for humans only
+  p1: { seedsWon: p1.n },
+  p2: { seedsBelow: p2.n },
+  curve: {
+    singlePeaked: singlePeaked(curve) ? 1 : 0,
+    means: { argmax: curve[0], 't0.5': curve[1], 't1.0': curve[2], 't2.0': curve[3] },
+  },
+  ab: { sampledScoreStdMax: std },
 };
 
 const results = {

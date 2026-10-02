@@ -20,6 +20,20 @@ Three parts:
 The mechanism doc — fidelity table, stub swap path, MicroMoth lineage — is
 [`docs/SURROGATE.md`](docs/SURROGATE.md).
 
+## The measured answer (A/B, pre-registered, seeds 101–108)
+
+| arm | mean score over 8 dungeons | verdict |
+|---|---|---|
+| argmax (73-c baseline shape) | **−7.13** | brittle: wall-bump loops on 4/8 seeds (50–55 bumps / 60 steps) |
+| sampled T=0.5 | 1.72 | rescues the loops |
+| sampled **T=1.0** | **3.31 (peak)** | **P1: PASS** (≥ argmax on 6/8 seeds) |
+| sampled T=2.0 | 1.83 | **P2: FAIL** as stated (3/8 vs argmax) — but T=2.0 < T=1.0 on 7/8 seeds |
+
+The temperature curve is **single-peaked with its peak exactly at T = 1.0**
+(`curve.singlePeaked = 1`): exploration pays, over-exploration dilutes — and
+argmax is worse than *any* sampled temperature because the greedy player has no
+taste, only a maximum. Full analysis: [`docs/SURROGATE.md` § 4](docs/SURROGATE.md).
+
 ## The stochastic policy problem
 
 An argmax player is greedy and brittle: it oscillates on plateaus, never takes

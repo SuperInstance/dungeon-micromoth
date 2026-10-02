@@ -1,0 +1,31 @@
+{
+  "tool": "preregister@1",
+  "claimsHash": "sha256:f0936ce92c5ed93e7a1cd8bb8751192e79493efabf82e09bc94525a11f01bffe",
+  "sealedAt": "2026-10-02T21:56:52.499Z",
+  "verdicts": [
+    {
+      "claimId": "P1",
+      "metric": "p1.seedsWon",
+      "op": "gte",
+      "threshold": 5,
+      "verdict": "PASS",
+      "measured": 6
+    },
+    {
+      "claimId": "P2",
+      "metric": "p2.seedsBelow",
+      "op": "gte",
+      "threshold": 5,
+      "verdict": "FAIL",
+      "measured": 3,
+      "reason": "Fewer than 5 of 8 seeds with meanScore(T=2.0) < argmaxScore => FAIL: over-exploration does not hurt, no single-peaked-curve evidence at these temperatures."
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 1,
+    "VACUOUS": 0,
+    "PENDING": 0
+  },
+  "law": "pure function of (claims, seal, results) — the carrying commit is the timestamp; FAIL and VACUOUS are honest receipts, never silenced"
+}
